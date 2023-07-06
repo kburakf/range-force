@@ -3,6 +3,7 @@ const fastify = require('fastify')({ logger: true });
 const fastifySwagger = require('@fastify/swagger');
 const fastifySwaggerUi = require('@fastify/swagger-ui');
 const fastifyRateLimit = require('@fastify/rate-limit');
+const fastifyHealthCheck = require('fastify-healthcheck');
 const swagger = require('../config/swagger');
 const { setup, routes } = require('../bootstrap/container');
 const {
@@ -14,6 +15,9 @@ setup();
 
 module.exports = class Server {
   async setup() {
+    fastify.register(fastifyHealthCheck, {
+      healthcheckUrl: '/health-check',
+    });
     await fastify.register(fastifyRateLimit, {
       max: rateLimit.MAX_RETRY,
       timeWindow: rateLimit.ONE_MINUTE,

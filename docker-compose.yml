@@ -13,7 +13,7 @@ services:
     container_name: docker-mongo
     image: mongo
     ports:
-      - "28017:27017"
+      - "27017:27017"
     volumes:
       - data:/data/db
 
