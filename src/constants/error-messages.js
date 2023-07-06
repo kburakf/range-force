@@ -63,4 +63,18 @@ module.exports = {
     message: 'Token not found in header.',
     code: 122,
   },
+  MODULE_EXIST: {
+    parent: BadRequestGenericError,
+    error: 'ModuleExistError',
+    level: ERROR_LEVELS.ERROR,
+    message: 'Given module name is already exist.',
+    code: 122,
+  },
+  MODULE_NOT_FOUND: {
+    parent: BadRequestGenericError,
+    error: 'ModuleNotFoundError',
+    level: ERROR_LEVELS.ERROR,
+    message: 'Module not found.',
+    code: 104,
+  },
 };

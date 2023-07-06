@@ -16,7 +16,7 @@ const routes = [
   },
   {
     method: 'PUT',
-    url: '/api/v1/users/:userId',
+    url: '/api/v1/users',
     schema: UserSchema.update,
     preHandler: fastifyPlugins.jwtVerifyToken(),
     handler: 'UserController.updateUserDetail',

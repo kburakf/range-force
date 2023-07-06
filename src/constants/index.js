@@ -9,4 +9,9 @@ module.exports = {
     DELETED: 'DELETED',
     FREEZED: 'FREEZED',
   },
+  DIFFICULTIES: {
+    EASY: 'EASY',
+    MEDIUM: 'MEDIUM',
+    HARD: 'HARD',
+  },
 };

@@ -30,6 +30,10 @@ fastifyPlugins.decorate(
         };
       }
 
+      if (!req.body) {
+        req.body = { role };
+      }
+
       req.body.role = role;
     }
 

@@ -17,7 +17,7 @@ module.exports = class UserController {
 
   async updateUserDetail(request) {
     const { UserService } = this;
-    const { userId } = request.params;
+    const { id: userId } = request.params;
     const user = request.body;
     return UserService.updateUserDetail({ userId, user });
   }
