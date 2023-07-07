@@ -79,7 +79,7 @@ module.exports = class ModuleService {
 
     const moduleData = await ModuleDatabase.getModuleById({
       moduleId,
-      fields: '_id',
+      fields: '-_id name',
     });
 
     if (!moduleData) {
@@ -96,7 +96,7 @@ module.exports = class ModuleService {
       await TrainingDatabase.startTraining({ moduleId, userId });
     }
 
-    await RedisCache.increaseModuleCount({ moduleId });
+    await RedisCache.increaseModuleCount({ moduleName: moduleData.name });
 
     return { isSuccess: true };
   }

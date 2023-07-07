@@ -7,10 +7,10 @@ module.exports = class RedisCache {
     this.redisClient = client;
   }
 
-  async increaseModuleCount({ moduleId }) {
+  async increaseModuleCount({ moduleName }) {
     const { redisClient } = this;
 
-    await redisClient.zIncrBy('modules:count', 1, moduleId);
+    await redisClient.zIncrBy('modules:count', 1, moduleName);
 
     const currentDate = moment();
     const endOfMonth = moment().endOf('month');
@@ -24,13 +24,26 @@ module.exports = class RedisCache {
   async getTop10Modules() {
     const { redisClient } = this;
 
-    const test = await redisClient.sendCommand([
+    const top10Keys = await redisClient.sendCommand([
       'ZREVRANGE',
       'modules:count',
       '0',
       '9',
+      'WITHSCORES',
     ]);
 
-    console.log(test);
+    if (top10Keys.length) {
+      const formattedKeys = [];
+
+      for (let i = 0; i < top10Keys.length; i += 2) {
+        const moduleName = top10Keys[i];
+        const count = parseInt(top10Keys[i + 1], 10);
+        formattedKeys.push({ moduleName, count });
+      }
+
+      return formattedKeys;
+    }
+
+    return [];
   }
 };
