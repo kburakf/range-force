@@ -138,6 +138,10 @@ module.exports = ExampleModel;
 
 ### Usage
 
+Example usage video
+
+- https://youtu.be/4qxdWJSZd0M
+
 Here is the admin token to create-update-delete module and course:
 
 ```
