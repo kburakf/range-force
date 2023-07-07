@@ -24,7 +24,8 @@ module.exports = class CourseDatabase {
       { _id: courseId },
       {
         ...(course.name ? { name: course.name } : undefined),
-      }
+      },
+      { new: true }
     )
       .lean()
       .exec();
@@ -38,14 +39,17 @@ module.exports = class CourseDatabase {
   async addModuleToCourse({ courseId, moduleId }) {
     return this.CourseModel.findOneAndUpdate(
       { _id: courseId },
-      { $addToSet: { modules: [moduleId] } }
+      { $addToSet: { modules: [moduleId] } },
+      { new: true }
     )
       .lean()
       .exec();
   }
 
   async getCourseByNameWithModules({ courseName, fields, moduleFields }) {
-    const courseData = this.CourseModel.findOne({ name: courseName }).select(fields);
+    const courseData = this.CourseModel.findOne({ name: courseName }).select(
+      fields
+    );
 
     courseData.populate({
       path: 'modules',

@@ -13,9 +13,9 @@ const CourseSchema = new Schema(
 );
 
 CourseSchema.pre('findOneAndUpdate', async function (next) {
-  const user = this.getUpdate();
+  const course = this.getUpdate();
 
-  user.updatedAt = new Date();
+  course.updatedAt = new Date();
 
   next();
 });

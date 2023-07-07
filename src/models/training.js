@@ -13,9 +13,9 @@ const TrainingSchema = new Schema(
 );
 
 TrainingSchema.pre('findOneAndUpdate', async function (next) {
-  const user = this.getUpdate();
+  const training = this.getUpdate();
 
-  user.updatedAt = new Date();
+  training.updatedAt = new Date();
 
   next();
 });

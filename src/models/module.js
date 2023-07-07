@@ -16,9 +16,9 @@ const ModuleSchema = new Schema(
 );
 
 ModuleSchema.pre('findOneAndUpdate', async function (next) {
-  const user = this.getUpdate();
+  const module = this.getUpdate();
 
-  user.updatedAt = new Date();
+  module.updatedAt = new Date();
 
   next();
 });

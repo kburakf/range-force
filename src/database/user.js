@@ -31,6 +31,7 @@ module.exports = class UserDatabase {
         ...(user.phoneNumber ? { phoneNumber: user.phoneNumber } : undefined),
         ...(user.imageUrl ? { imageUrl: user.imageUrl } : undefined),
       },
+      { new: true },
     )
       .lean()
       .exec();

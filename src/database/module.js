@@ -31,7 +31,8 @@ module.exports = class ModuleDatabase {
           ? { description: module.description }
           : undefined),
         ...(module.difficulty ? { difficulty: module.difficulty } : undefined),
-      }
+      },
+      { new: true },
     )
       .lean()
       .exec();
