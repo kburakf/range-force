@@ -9,6 +9,11 @@ services:
       - .:/usr/src/app
     depends_on:
       - mongodb
+      - redis
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
   mongodb:
     container_name: docker-mongo
     image: mongo

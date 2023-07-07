@@ -36,9 +36,11 @@ module.exports = class Server {
     await fastify.ready();
 
     await fastify.listen({ port }, (err, address) => {
-      if (err) throw err;
-
-      console.log(`Server is running on ${address}`);
+      if (err) {
+        console.log(`Server is running on ${address}`);
+        this.stop();
+        throw err;
+      }
     });
 
     return fastify;

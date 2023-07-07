@@ -15,4 +15,7 @@ module.exports = {
     tokenKey: process.env.TOKEN_KEY || 't0k3n',
     pepper: process.env.PEPPER || 'p3pp3r',
   },
+  redis: {
+    url: process.env.REDIS_URL || 'redis://localhost:6379',
+  },
 };

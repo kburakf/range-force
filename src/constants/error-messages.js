@@ -67,7 +67,7 @@ module.exports = {
     parent: BadRequestGenericError,
     error: 'ModuleExistError',
     level: ERROR_LEVELS.ERROR,
-    message: 'Given module name is already exist.',
+    message: 'Given module data is already exist.',
     code: 122,
   },
   MODULE_NOT_FOUND: {

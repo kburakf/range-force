@@ -27,4 +27,9 @@ module.exports = class ModuleController {
     const { moduleId, id: userId } = request.params;
     return ModuleService.startTraining({ moduleId, userId });
   }
+
+  async top10Modules() {
+    const { ModuleService } = this;
+    return ModuleService.top10Modules();
+  }
 };

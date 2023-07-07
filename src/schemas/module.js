@@ -56,4 +56,9 @@ module.exports = {
     headers: tokenSchema,
     params: { moduleId: { type: 'string' } },
   },
+  top10Modules: {
+    tags,
+    summary: 'Get top 10 modules of current month',
+    headers: tokenSchema,
+  },
 };

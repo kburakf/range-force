@@ -1,10 +1,11 @@
 const { ModuleExistError, ModuleNotFoundError } = require('../errors/types');
 
 module.exports = class ModuleService {
-  constructor({ logger, ModuleDatabase, TrainingDatabase }) {
+  constructor({ logger, ModuleDatabase, TrainingDatabase, RedisCache }) {
     this.logger = logger;
     this.ModuleDatabase = ModuleDatabase;
     this.TrainingDatabase = TrainingDatabase;
+    this.RedisCache = RedisCache;
   }
 
   async create({ module }) {
@@ -71,7 +72,7 @@ module.exports = class ModuleService {
   }
 
   async startTraining({ moduleId, userId }) {
-    const { logger, ModuleDatabase, TrainingDatabase } = this;
+    const { logger, ModuleDatabase, TrainingDatabase, RedisCache } = this;
 
     logger.debug('[ModuleService] start', { moduleId, userId });
 
@@ -84,8 +85,19 @@ module.exports = class ModuleService {
       throw new ModuleNotFoundError();
     }
 
-    await TrainingDatabase.startTraining({ moduleId, userId });
+    const training = await TrainingDatabase.getTraining({ moduleId, userId, fields: '_id' });
+    // I am not sure if we need to create duplicate training here?
+    if (!training) {
+      await TrainingDatabase.startTraining({ moduleId, userId });
+    }
+
+    await RedisCache.increaseModuleCount({ moduleId });
 
     return { isSuccess: true };
+  }
+
+  async top10Modules() {
+    const { RedisCache } = this;
+    return RedisCache.getTop10Modules();
   }
 };

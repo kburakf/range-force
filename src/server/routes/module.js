@@ -31,6 +31,13 @@ const routes = [
     preHandler: fastifyPlugins.jwtVerifyToken(),
     handler: 'ModuleController.startTraining',
   },
+  {
+    method: 'GET',
+    url: '/api/v1/modules/top-10',
+    schema: ModuleSchema.top10Modules,
+    preHandler: fastifyPlugins.jwtVerifyToken(),
+    handler: 'ModuleController.top10Modules',
+  },
 ];
 
 module.exports = routes;

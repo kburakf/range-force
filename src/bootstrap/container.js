@@ -5,6 +5,7 @@ const logger = require('loglevel');
 
 const container = awilix.createContainer();
 const ServiceCaller = require('../utils/service-caller');
+const RedisCache = require('../utils/redis-cache');
 
 const createRouteHandlerFunction = (container, { controllerName, methodName }) => async (req, res) => {
   const scoped = container.createScope();
@@ -33,6 +34,7 @@ function routes() {
 
 function setup() {
   container.register('ServiceCaller', awilix.asClass(ServiceCaller));
+  container.register('RedisCache', awilix.asClass(RedisCache));
   container.register('axios', awilix.asValue(axios));
   container.register('logger', awilix.asValue(logger));
 
