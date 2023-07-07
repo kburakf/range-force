@@ -24,11 +24,9 @@ module.exports = class ModuleService {
       throw new ModuleExistError();
     }
 
-    await ModuleDatabase.create({ module }).catch((err) => {
-      throw new Error(err);
-    });
+    const createdModule = await ModuleDatabase.create({ module });
 
-    return { isSuccess: true };
+    return createdModule;
   }
 
   async update({ module, moduleId }) {
@@ -45,11 +43,14 @@ module.exports = class ModuleService {
       throw new ModuleNotFoundError();
     }
 
-    await ModuleDatabase.updateModuleById({ module, moduleId }).catch((err) => {
+    const updatedModule = await ModuleDatabase.updateModuleById({
+      module,
+      moduleId,
+    }).catch((err) => {
       throw new Error(err);
     });
 
-    return { isSuccess: true };
+    return updatedModule;
   }
 
   async delete({ moduleId }) {
@@ -85,7 +86,11 @@ module.exports = class ModuleService {
       throw new ModuleNotFoundError();
     }
 
-    const training = await TrainingDatabase.getTraining({ moduleId, userId, fields: '_id' });
+    const training = await TrainingDatabase.getTraining({
+      moduleId,
+      userId,
+      fields: '_id',
+    });
     // I am not sure if we need to create duplicate training here?
     if (!training) {
       await TrainingDatabase.startTraining({ moduleId, userId });
