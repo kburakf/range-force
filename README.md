@@ -1,37 +1,42 @@
 <div align="center">
 <img src="https://miro.medium.com/max/4610/1*Ce0gUe0LbnhL7ebnDGTp5w.png" width="300" height="90"/>
 <img src="https://www.redspark.io/wp-content/uploads/2020/04/imagem_swagger.png" width="300" height="90"/>
-<img src="https://www.fastify.io/images/fastify-logo-menu.d13f8da7a965c800.png" width="300" height="90"/>
+<img src="https://fastify.io/img/logos/fastify-black.png" width="300" height="90"/>
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/800px-Redis_Logo.svg.png" width="300" height="90"/>
+<img src="https://spin.atomicobject.com/wp-content/uploads/jest.png" width="300" height="120"/>
 </div>
 
-<h4 align="center"> Welcome buddy! This template ready to your project's backend!</h1>
-
-### Quick Start <img src="https://lh3.googleusercontent.com/proxy/RW5IcSMvk-nTOhjm6sHblakneB8PQYJVxPtkE5Y3VHmuuTrP262XLLGiXpqt_sqW9ggjoeRVjFeIqNqkxZhkHK691GxzV3CxFRjmWkSASsDwEWU2zzoORmspCZxe7u4" widht="20" height="25"/>
-
+### Quick Start
 ```
 mkdir my-template
 cd my-template
 ```
 
-### Install dependencies <img src="https://pngimg.com/uploads/box/box_PNG49.png" width="25" height="25"/>
+### Install dependencies
 
 ```
 npm install
 ```
 
-### Start the app <img src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/256/full/nodejslogo.png" width="25" height="25"/>
+### Start the app
 
 ```
 npm start || nodemon start
 ```
 
-### Docker start <img src ="https://www.docker.com/sites/default/files/d8/styles/role_icon/public/2019-07/Moby-logo.png?itok=sYH_JEaJ" width="30" height="25"/>
+### Docker start
 
 ```
-docker-compose up --build
+docker-compose up -d
 ```
 
-### Contents <img src="https://img.pngio.com/contents-png-3-png-image-contents-png-500_500.png" width="30" height="25"/>
+### Jest test
+
+```
+npm test
+```
+
+### Contents
 ```
 ESlint
 Dependency Injection
@@ -40,7 +45,7 @@ Custom Error
 Example CRUD operations written
 ```
 
-### Examples <img src="https://www.freepnglogos.com/uploads/pencil-png/pencil-png-transparent-png-pictures-icons-and-png-2.png" width="20" height="25"/>
+### Backend Example Code Structure
 
 Route
 
@@ -131,13 +136,48 @@ const ExampleModel = () => mongoose.model('Example', ExampleSchema);
 module.exports = ExampleModel;
 ```
 
-### Swagger <img src="https://miro.medium.com/max/300/1*2DKX6fd0wlVbbjff_noWHg.png" width="25" height="25"/>
+### Usage
+
+Here is the admin token to create-update-delete module and course:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTcyZjZhMzI2YTliOTNlOWNiNzFlYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY4ODY3ODI3NCwiZXhwIjoxNjkxMjcwMjc0fQ.OPWbkynikhGRBuIFP6IVtP_R0Mla16UqmyyoUvrEqXA
+```
+For those processes above, the token should be provided in the header.
+
+## Some rule cases
+
+- Module name is unique in model, so there can't be duplicate module.
+- Course name is unique in model, so there can't be duplicate course.
+- Course and module can be added-updated-deleted only by admin
+- Every user can see TOP 10 modules (token required in header)
+- User cannot use the same password or e-mail address to update password or e-mail
+
+## Security
+
+- OAuth added
+- Roles added to manage courses and modules **(Role can be ADMIN or USER)**
+- [Salt and Pepper](https://medium.com/@berto168/salt-pepper-spice-up-your-hash-b48328caa2af) hash method added for password againts to hacker attacks
+
+### Swagger
 
 Local swagger link
 
 <a href="http://localhost:3000/documentation#/">http://localhost:3000/documentation#/</a>
 
-<img src="https://i.ibb.co/f96BKbn/ss.png" widht="auto" height="500"/>
+![image](https://github.com/kburakf/range-force/assets/45143556/78bff176-c011-47e0-bcad-0c959b2512d5)
+
+### Redis
+
+<img width="958" alt="image" src="https://github.com/kburakf/range-force/assets/45143556/8a14c62c-df4d-4383-b3e8-7c525609d61a">
+
+### MongoDB
+
+![image](https://github.com/kburakf/range-force/assets/45143556/82649143-50a0-428e-aed3-9976c2d36b23)
+
+### Test results
+
+<img width="368" alt="image" src="https://github.com/kburakf/range-force/assets/45143556/c1461b22-45b7-4c3d-ae1a-aa4d2cf6bf79">
 
 ### License <img src="https://img.icons8.com/ios/452/licence.png" width="25" height="25"/>
 
