@@ -28,9 +28,9 @@ module.exports = class CourseController {
     return CourseService.addModuleToCourse({ courseId, moduleId });
   }
 
-  async listModulesByCategoryName(request) {
+  async listModulesByCourseName(request) {
     const { CourseService } = this;
-    const { courseName } = request.params;
-    return CourseService.listModulesByCategoryName({ courseName });
+    const { name: courseName } = request.query;
+    return CourseService.listModulesByCourseName({ courseName });
   }
 };

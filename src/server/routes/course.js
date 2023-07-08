@@ -33,10 +33,10 @@ const routes = [
   },
   {
     method: 'GET',
-    url: '/api/v1/courses/:courseName',
-    schema: CourseSchema.listModulesByCategoryName,
+    url: '/api/v1/courses',
+    schema: CourseSchema.listModulesByCourseName,
     preHandler: fastifyPlugins.jwtVerifyToken(),
-    handler: 'CourseController.listModulesByCategoryName',
+    handler: 'CourseController.listModulesByCourseName',
   },
 ];
 

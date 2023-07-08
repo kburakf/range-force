@@ -45,10 +45,10 @@ module.exports = {
     headers: tokenSchema,
     params: { courseId: { type: 'string' }, moduleId: { type: 'string' } },
   },
-  listModulesByCategoryName: {
+  listModulesByCourseName: {
     tags,
     summary: 'List modules by category name',
     headers: tokenSchema,
-    params: { courseName: { type: 'string' } },
+    query: { name: { type: 'string' } },
   },
 };

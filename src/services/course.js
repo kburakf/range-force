@@ -113,10 +113,10 @@ module.exports = class CourseService {
     return updatedCourse;
   }
 
-  async listModulesByCategoryName({ courseName }) {
+  async listModulesByCourseName({ courseName }) {
     const { logger, CourseDatabase } = this;
 
-    logger.debug('[CourseService] listModulesByCategoryName', { courseName });
+    logger.debug('[CourseService] listModulesByCourseName', { courseName });
 
     const courseData = await CourseDatabase.getCourseByNameWithModules({
       courseName,
