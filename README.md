@@ -3,8 +3,10 @@
 <img src="https://www.redspark.io/wp-content/uploads/2020/04/imagem_swagger.png" width="300" height="90"/>
 <img src="https://fastify.io/img/logos/fastify-black.png" width="300" height="90"/>
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Redis_Logo.svg/800px-Redis_Logo.svg.png" width="300" height="90"/>
-<img src="https://spin.atomicobject.com/wp-content/uploads/jest.png" width="300" height="120"/>
+<img src="https://spin.atomicobject.com/wp-content/uploads/jest.png" width="260" height="120"/>
 </div>
+
+<h6 align="center">This template is written by Kürşat Burak Farız</h6>
 
 ### Quick Start
 ```
